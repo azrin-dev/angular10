@@ -1,0 +1,98 @@
+h1 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bolder;
+}
+
+.card {
+    margin: 10px;
+    &__title {
+        height: 4rem;
+        text-align: center;
+    }
+    &__stats {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        &-date {
+            text-align: right;
+        }
+        &-no {
+            margin-left: 40px;
+            text-align: left;
+        }
+        &-no-latest {
+            text-align: right;
+        }
+        &-item {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        &-changes-up {
+            margin-left: 15px;
+            color: #e91e63;
+            text-align: left;
+            font-weight: bold;
+        }
+        &-changes-flat {
+            color: #41a551;
+            text-align: left;
+            margin-left: 28px;
+        }
+        &-desc {
+            padding-right: 10px;
+        }
+    }
+    &__content {
+        height: 13vh;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+.desc {
+    padding-left: 0px;
+    text-align: left;
+}
+
+.header {
+    background-color: #242424;
+    height: 6rem;
+    margin: 10px;
+    border-radius: 5px;
+    top: 3vh;
+    &__logo {
+        padding: 10px;
+    }
+}
+
+.mat-card-image {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    clip-path: inset(13% 0% 13% 0%);
+    height: 20vh;
+}
+
+.spinner {
+    height: 85vh;
+    width: auto;
+    &__mat {
+        margin-bottom: 20px;
+    }
+}
