@@ -1,13 +1,6 @@
 const axios = require('axios');
 const { time } = require('console');
-
-
-const url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=dyRsYk0LyA8%2CvRXZj0DzXIA%2CioNng23DkIM%2C2S24-y0Ij3Y%2Cb73BI9eUkjM%2CIHNzOHi8sJs%2CAmq-qlqbjYA%2CFzVR_fymZw4%2C9pdj4iJD08s%2CdISNgvVpWlo%2CbwmSjveL3Lc&key=AIzaSyAkPRCx0WYL04R8ALIA79PDDedDYUATtoA';
-
-const options = {
-    Authorization: 'Bearer AIzaSyAkPRCx0WYL04R8ALIA79PDDedDYUATtoA',
-    Accept: 'application/json'
-};
+require('dotenv').config({ path: '../../variables.env' });
 
 var prevDatas;
 
@@ -16,6 +9,13 @@ exports.welcome = async(req, res) => {
 }
 
 exports.blackpinkStat = async(req, res) => {
+
+    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=dyRsYk0LyA8%2CvRXZj0DzXIA%2CioNng23DkIM%2C2S24-y0Ij3Y%2Cb73BI9eUkjM%2CIHNzOHi8sJs%2CAmq-qlqbjYA%2CFzVR_fymZw4%2C9pdj4iJD08s%2CdISNgvVpWlo%2CbwmSjveL3Lc&key=${process.env.YOUTUBE_API_KEY}`;
+    const options = {
+        Authorization: `Bearer ${process.env.YOUTUBE_API_KEY}`,
+        Accept: 'application/json'
+    };
+
     var stats = await axios.get(url, options);
     var datas = stats.data.items;
     var date = stats.headers.date;
@@ -29,15 +29,11 @@ exports.blackpinkStat = async(req, res) => {
 
             let a = [];
             a = prevDatas;
-
             let statDiff = {};
-
-
 
             statDiff = a.reduce((acc2, val2) => {
 
                 let diff = {};
-
                 if (val1.id == val2.id) {
                     diff.viewCount = val1.statistics.viewCount - val2.statistics.viewCount;
                     diff.likeCount = val1.statistics.likeCount - val2.statistics.likeCount;
@@ -48,14 +44,12 @@ exports.blackpinkStat = async(req, res) => {
 
             }, {});
 
-
             val1.statDiff = statDiff;
             arr1.push(val1);
             acc1 = arr1;
             return acc1;
         }, []);
 
-        console.log(newDataDiff);
         prevDatas = datas;
         datas = newDataDiff;
         newDatas = { datas, date };
