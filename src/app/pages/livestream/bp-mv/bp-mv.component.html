@@ -1,130 +1,141 @@
-<div class="card" fxFlex="18" *ngFor="let data of datas">
-    <mat-card>
-        <mat-card-header>
-            <div class="card__title">
-                <h1>
-                    {{ data.snippet.title }}
-                </h1>
-            </div>
-        </mat-card-header>
-        <img class="card__image" mat-card-image src="{{ data.snippet.thumbnails.standard.url }}">
-        <mat-card-content>
+<div class="layout">
 
-            <div class="card__content">
+    <div class="cards">
+        <div class="card" fxFlex="18" *ngFor="let data of datas">
+            <mat-card>
 
-                <div class="card__stats" fxLayout="column">
-                    <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                        <!--
+                <mat-card-header>
+                    <div class="card__title">
+                        <h1>
+                            {{ data.snippet.title }}
+                        </h1>
+                    </div>
+                </mat-card-header>
+
+                <!--
+                   <img class="card__image" mat-card-image src="{{ data.snippet.thumbnails.standard.url }}">
+                -->
+
+                <mat-card-content>
+
+                    <div class="card__content">
+
+                        <div class="card__stats" fxLayout="column">
+                            <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
+                                <!--
                        <div fxFlex="10">
                            <mat-icon color="primary">music_video</mat-icon>
                        </div>
                      -->
-                        <div class="desc" fxFlex="20">
-                            <h2>Published:</h2>
+                                <div class="desc" fxFlex="20">
+                                    <h2>Published:</h2>
+                                </div>
+                                <div class="card__stats-date" fxFlex="80">
+                                    <h2>{{ data.snippet.publishedAt | date}}</h2>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card__stats-date" fxFlex="80">
-                            <h2>{{ data.snippet.publishedAt | date}}</h2>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card__stats" fxLayout="column">
-                    <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                        <!--
+                        <div class="card__stats" fxLayout="column">
+                            <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
+                                <!--
                        <div fxFlex="10">
                            <mat-icon color="primary">visibility</mat-icon>
                        </div>
                      -->
-                        <div class="desc" fxFlex="20">
-                            <h2>Views: </h2>
-                        </div>
-                        <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-evenly center">
-                            <div class="card__stats-changes-up" fxFlex="50" fxFlexAlign="start" *ngIf="(data.statDiff.viewCount > 0) else noView">
-                                <h2>
-                                    {{ data.statDiff.viewCount | currency:'':'':'4.0-2'}}
-                                    <mat-icon>trending_up</mat-icon>
-
-                                </h2>
-                            </div>
-                            <ng-template #noView>
-                                <div class="card__stats-changes-flat" fxFlex="50">
-                                    <h2>
-                                        <mat-icon>trending_flat</mat-icon>
-                                    </h2>
+                                <div class="desc" fxFlex="20">
+                                    <h2>Views: </h2>
                                 </div>
-                            </ng-template>
-                            <div class="card__stats-no-latest" fxFlex="50" fxFlexAlign="end">
-                                <h2>{{ data.statistics.viewCount | currency:'':'':'4.0-2' }}</h2>
+                                <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-evenly center">
+                                    <div class="card__stats-changes-up" fxFlex="50" fxFlexAlign="start" *ngIf="(data.statDiff.viewCount > 0) else noView">
+                                        <h2>
+                                            {{ data.statDiff.viewCount | currency:'':'':'4.0-2'}}
+                                            <mat-icon>trending_up</mat-icon>
+
+                                        </h2>
+                                    </div>
+                                    <ng-template #noView>
+                                        <div class="card__stats-changes-flat" fxFlex="50">
+                                            <h2>
+                                                <mat-icon>trending_flat</mat-icon>
+                                            </h2>
+                                        </div>
+                                    </ng-template>
+                                    <div class="card__stats-no-latest" fxFlex="50" fxFlexAlign="end">
+                                        <h2>{{ data.statistics.viewCount | currency:'':'':'4.0-2' }}</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="card__stats" fxLayout="column">
-                    <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                        <!--
+                        <div class="card__stats" fxLayout="column">
+                            <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
+                                <!--
                        <div fxFlex="10">
                            <mat-icon color="primary">thumb_up</mat-icon>
                        </div>
                      -->
-                        <div class="desc" fxFlex="20">
-                            <h2>Likes: </h2>
-                        </div>
-                        <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-around end">
-                            <div class="card__stats-changes-up" fxFlex="40" fxFlexAlign="start" *ngIf="(data.statDiff.likeCount > 0) else noLike">
-                                <h2>{{ data.statDiff.likeCount }}
-                                    <mat-icon>trending_up</mat-icon>
-                                </h2>
-                            </div>
-                            <ng-template #noLike>
-                                <div class="card__stats-changes-flat" fxFlex="40">
-                                    <h2>
-                                        <mat-icon>trending_flat</mat-icon>
-                                    </h2>
+                                <div class="desc" fxFlex="20">
+                                    <h2>Likes: </h2>
                                 </div>
-                            </ng-template>
-                            <div class="card__stats-no-latest" fxFlex="60" fxFlexAlign="end">
-                                <h2>{{ data.statistics.likeCount | currency:'':'':'7.0-2' }}</h2>
+                                <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-around end">
+                                    <div class="card__stats-changes-up" fxFlex="40" fxFlexAlign="start" *ngIf="(data.statDiff.likeCount > 0) else noLike">
+                                        <h2>{{ data.statDiff.likeCount }}
+                                            <mat-icon>trending_up</mat-icon>
+                                        </h2>
+                                    </div>
+                                    <ng-template #noLike>
+                                        <div class="card__stats-changes-flat" fxFlex="40">
+                                            <h2>
+                                                <mat-icon>trending_flat</mat-icon>
+                                            </h2>
+                                        </div>
+                                    </ng-template>
+                                    <div class="card__stats-no-latest" fxFlex="60" fxFlexAlign="end">
+                                        <h2>{{ data.statistics.likeCount | currency:'':'':'7.0-2' }}</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="card__stats" fxLayout="column">
-                    <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                        <!--
+                        <div class="card__stats" fxLayout="column">
+                            <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
+                                <!--
                        <div fxFlex="10">
                            <mat-icon color="primary">comment</mat-icon>
                        </div>
                      -->
-                        <div class="desc" fxFlex="20">
-                            <h2>Comments: </h2>
-                        </div>
-                        <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between center">
-                            <div class="card__stats-changes-up" fxFlex="40" *ngIf="(data.statDiff.commentCount > 0) else noComment">
-                                <h2>{{ data.statDiff.commentCount }}
-                                    <mat-icon>trending_up</mat-icon>
-                                </h2>
-                            </div>
-                            <ng-template #noComment>
-                                <div class="card__stats-changes-flat" fxFlex="40">
-                                    <h2>
-                                        <mat-icon>trending_flat</mat-icon>
-                                    </h2>
+                                <div class="desc" fxFlex="20">
+                                    <h2>Comments: </h2>
                                 </div>
-                            </ng-template>
+                                <div class="card__stats-no" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="card__stats-changes-up" fxFlex="40" *ngIf="(data.statDiff.commentCount > 0) else noComment">
+                                        <h2>{{ data.statDiff.commentCount }}
+                                            <mat-icon>trending_up</mat-icon>
+                                        </h2>
+                                    </div>
+                                    <ng-template #noComment>
+                                        <div class="card__stats-changes-flat" fxFlex="40">
+                                            <h2>
+                                                <mat-icon>trending_flat</mat-icon>
+                                            </h2>
+                                        </div>
+                                    </ng-template>
 
 
-                            <div class="card__stats-no-latest" fxFlex="60">
-                                <h2>{{ data.statistics.commentCount | currency:'':'':'5.0-2' }}</h2>
+                                    <div class="card__stats-no-latest" fxFlex="60">
+                                        <h2>{{ data.statistics.commentCount | currency:'':'':'5.0-2' }}</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
-                </div>
 
+                </mat-card-content>
 
-            </div>
-
-        </mat-card-content>
-    </mat-card>
+            </mat-card>
+        </div>
+    </div>
 </div>

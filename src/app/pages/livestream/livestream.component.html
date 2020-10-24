@@ -11,6 +11,8 @@
         </div>
     </div>
 
+    <app-bp-mv></app-bp-mv>
+
     <div class="cards" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch" fxLayoutGap="10px" *ngIf="datas else spinner">
 
         <div class="card" fxFlex="18" *ngFor="let data of datas">
@@ -29,11 +31,6 @@
 
                         <div class="card__stats" fxLayout="column">
                             <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                                <!--
-                                <div fxFlex="10">
-                                    <mat-icon color="primary">music_video</mat-icon>
-                                </div>
-                              -->
                                 <div class="desc" fxFlex="20">
                                     <h2>Published:</h2>
                                 </div>
@@ -45,11 +42,6 @@
 
                         <div class="card__stats" fxLayout="column">
                             <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                                <!--
-                                <div fxFlex="10">
-                                    <mat-icon color="primary">visibility</mat-icon>
-                                </div>
-                              -->
                                 <div class="desc" fxFlex="20">
                                     <h2>Views: </h2>
                                 </div>
@@ -77,11 +69,6 @@
 
                         <div class="card__stats" fxLayout="column">
                             <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                                <!--
-                                <div fxFlex="10">
-                                    <mat-icon color="primary">thumb_up</mat-icon>
-                                </div>
-                              -->
                                 <div class="desc" fxFlex="20">
                                     <h2>Likes: </h2>
                                 </div>
@@ -107,11 +94,6 @@
 
                         <div class="card__stats" fxLayout="column">
                             <div class="card__stats-item" fxLayout="row" fxLayoutAlign="center">
-                                <!--
-                                <div fxFlex="10">
-                                    <mat-icon color="primary">comment</mat-icon>
-                                </div>
-                              -->
                                 <div class="desc" fxFlex="20">
                                     <h2>Comments: </h2>
                                 </div>
